@@ -1,5 +1,5 @@
 import "./global.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "./components/button";
 import styles from "./app.module.css";
 //import { useMessage } from "./hooks/useMessage";
@@ -16,6 +16,11 @@ export function App() {
   function handleRemove() {
     setCount((prevState) => prevState - 1);
   }
+
+  useEffect(() => {
+    console.log("Hello World");
+  }, []);
+  
   return (
     <div className={styles.container}>
       <Button name="Adicionar" onClick={handleAdd} />
