@@ -7,20 +7,24 @@ import styles from "./app.module.css";
 export function App() {
   const [count, setCount] = useState(0);
 
-  //const { show } = useMessage({name: "Bruno"});
+  //const message = useMessage({ name: "Bruno" });
 
   function handleAdd() {
     setCount((prevState) => prevState + 1);
   }
 
   function handleRemove() {
-    setCount((prevState) => prevState - 1);
+    if (count > 0) {
+      setCount((prevState) => prevState - 1);
+    }
   }
 
   useEffect(() => {
-    console.log("Hello World");
-  }, []);
-  
+    if (count > 0) {
+      console.log("count change: ", +count);
+    }
+  }, [count]);
+
   return (
     <div className={styles.container}>
       <Button name="Adicionar" onClick={handleAdd} />
